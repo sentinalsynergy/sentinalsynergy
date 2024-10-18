@@ -1,58 +1,58 @@
-## Title of the Project
-Small description about the project like one below
-The integration of a chatbot within a hostel booking system, aimed at streamlining the reservation process for students and improving the overall user experience.
+## Sentinel Synergy: Revolutionizing Aqua Sump Systems with Automated Ventilation and Integrated Self-Diagnostics for Advanced Home Safety
+Traditional systems often focus on detecting a single type of gas, lack advanced user interfaces, and operate in isolation from other home systems. Moreover, these devices typically lack self-maintenance features, which can lead to undetected malfunctions over time.
+
+The Sentinel Synergy project addresses this need by integrating industrial-grade features into a household IoT solution, aiming to set a new standard in residential protection.       
 
 ## About
-<!--Detailed Description about the project-->
-Tailored Chatbot for Hostel Booking System is a project designed to integrate a chatbot that leverages advanced natural language processing techniques to understand and respond to user queries to the hostel booking system. Traditional hostel booking processes are often time-consuming and involve manual searches and extensive communication with hostel staff. This project seeks to overcome these challenges by creating an easy-to-use chatbot interface that assists students in addressing inquiries.
+Household gas detection systems are often limited to monitoring a single gas, leaving homeowners vulnerable to a wider range of potential hazards. 
+Current consumer-grade gas detectors typically feature basic, non-intuitive alarms, such as simple beeps or LED indicators. 
+Household gas detectors are usually standalone devices that alert users but do not take automatic action.
+Consumer-grade gas detectors generally lack the advanced self-diagnostics and auto-calibration features found in industrial systems. Without these capabilities, household devices are prone to sensor drift, reduced accuracy, and undetected failures, compromising long-term safety.
+Addressing these challenges, the Sentinel Synergy project seeks to enhance home safety by integrating multi-gas detection, advanced user interfaces, automatic shutoff, smart ventilation control, and self-diagnostics into a comprehensive IoT-based system.
 
 ## Features
 <!--List the features of the project as shown below-->
-- Implements advance neural network method.
-- A framework based application for deployment purpose.
-- High scalability.
-- Less time complexity.
-- A specific scope of Chatbot response model, using json data format.
-
+- Automated Ventilation
+- Integrated Self-Diagnostics
+- Advanced Home Safety Integration
+- Energy Efficiency
+- 
 ## Requirements
-<!--List the requirements of the project as shown below-->
-* Operating System: Requires a 64-bit OS (Windows 10 or Ubuntu) for compatibility with deep learning frameworks.
-* Development Environment: Python 3.6 or later is necessary for coding the sign language detection system.
-* Deep Learning Frameworks: TensorFlow for model training, MediaPipe for hand gesture recognition.
-* Image Processing Libraries: OpenCV is essential for efficient image processing and real-time hand gesture recognition.
-* Version Control: Implementation of Git for collaborative development and effective code management.
-* IDE: Use of VSCode as the Integrated Development Environment for coding, debugging, and version control integration.
-* Additional Dependencies: Includes scikit-learn, TensorFlow (versions 2.4.1), TensorFlow GPU, OpenCV, and Mediapipe for deep learning tasks.
+### HARDWARE REQUIREMENTS
+1.SIM800L/SIM900 GSM Module: To handle SMS communication.
+2.Relay Module: To control the motor for ventilation.
+3.MQ-137 For detecting ammonia (NH3)
+4.MQ-136 For detecting H2S 
+5.MQ-4 Gas Sensors: For detecting methane (CH4) levels.
 
-## System Architecture
-<!--Embed the system architecture diagram as shown below-->
-
-![Screenshot 2023-11-25 133637](https://github.com/<<yourusername>>/Hand-Gesture-Recognition-System/assets/75235455/a60c11f3-0a11-47fb-ac89-755d5f45c995)
-
-
-## Output
-
-<!--Embed the Output picture at respective places as shown below as shown below-->
-#### Output1 - Name of the output
-
-![Screenshot 2023-11-25 134037](https://github.com/<<yourusername>>/Hand-Gesture-Recognition-System/assets/75235455/8c2b6b5c-5ed2-4ec4-b18e-5b6625402c16)
-
-#### Output2 - Name of the output
-![Screenshot 2023-11-25 134253](https://github.com/<<yourusername>>/Hand-Gesture-Recognition-System/assets/75235455/5e05c981-05ca-4aaa-aea2-d918dcf25cb7)
+### SOFTWARE REQUIREMENTS
+1. Arduino Software
+2. ESP32 Drivers
+3. <SoftwareSerial.h> library
+4. <Wire.h> library
 
 Detection Accuracy: 96.7%
 Note: These metrics can be customized based on your actual performance evaluations.
 
 
 ## Results and Impact
-<!--Give the results and impact as shown below-->
-The Sign Language Detection System enhances accessibility for individuals with hearing and speech impairments, providing a valuable tool for inclusive communication. The project's integration of computer vision and deep learning showcases its potential for intuitive and interactive human-computer interaction.
-
-This project serves as a foundation for future developments in assistive technologies and contributes to creating a more inclusive and accessible digital environment.
+What can be accomplised?
+- Enhanced home safety
+- Automated Safety Response
+- Reliable long-term operation
+- Reduction in maintenance cost
+- Improved user awareness and response 
 
 ## Articles published / References
-1. N. S. Gupta, S. K. Rout, S. Barik, R. R. Kalangi, and B. Swampa, “Enhancing Heart Disease Prediction Accuracy Through Hybrid Machine Learning Methods ”, EAI Endorsed Trans IoT, vol. 10, Mar. 2024.
-2. A. A. BIN ZAINUDDIN, “Enhancing IoT Security: A Synergy of Machine Learning, Artificial Intelligence, and Blockchain”, Data Science Insights, vol. 2, no. 1, Feb. 2024.
+
+Implementation of Real Time Approach for Early Warning Gas Leakage Detection ,Anisa Qistina Binti Nor Azuwan; Tuan Norjihan Binti Tuan Yaakub;Anees Bt Abdul Aziz
+2022 IEEE 12th Symposium on Computer Applications & Industrial Electronics (ISCAIE)Year: 2022 | Conference Paper | Publisher: IEEE
+
+Gas Detection Approaches in Smart Houses,Hashem Almarzooqi;Ibrahim Alzubaidi;Ali Albahrani;Ahmed Almansoori;Maad Shatnawi,2019 International Conference on Computational Science and Computational Intelligence (CSCI)Year: 2019 | Conference Paper | Publisher: IEEE
+
+Gas Detection And Environmental Monitoring Using Raspberry Pi Pico, 2024 IEEE Students Conference on Engineering and Systems (SCES), June 21-23, 2024, Prayagraj, India 
+
+
 
 
 
