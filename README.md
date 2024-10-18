@@ -16,7 +16,7 @@ Addressing these challenges, the Sentinel Synergy project seeks to enhance home 
 - Integrated Self-Diagnostics
 - Advanced Home Safety Integration
 - Energy Efficiency
-- 
+
 ## Requirements
 ### HARDWARE REQUIREMENTS
 1.SIM800L/SIM900 GSM Module: To handle SMS communication.
