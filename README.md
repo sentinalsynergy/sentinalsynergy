@@ -34,6 +34,119 @@ Addressing these challenges, the Sentinel Synergy project seeks to enhance home 
 Detection Accuracy: 96.7%
 Note: These metrics can be customized based on your actual performance evaluations.
 
+## Important Code Segment
+```
+#include <SoftwareSerial.h>
+#include <Wire.h>
+
+// Pin Definitions
+#define RELAY_PIN  5
+#define MOTOR_ON   HIGH
+#define MOTOR_OFF  LOW
+
+#define MQ_137_PIN 34   // Ammonia
+#define MQ_136_PIN 35   // H2S
+#define MQ_4_PIN   32   // Methane
+
+// Thresholds for gas levels
+#define GAS_ALERT_THRESHOLD 30  // 30% PPM Threshold for alert
+#define GAS_CRITICAL_THRESHOLD 80  // 80% PPM Threshold for auto ventilation
+
+// GSM
+SoftwareSerial sim800(16, 17);  // RX, TX (choose GPIOs)
+// Variables for gas sensor readings
+float ammonia_level = 0;
+float h2s_level = 0;
+float methane_level = 0;
+// Relay control variables
+bool motor_status = false;
+bool motor_auto_override = false;
+unsigned long motor_stop_time = 0;
+// Helper functions
+void sendSMS(String message) {
+    sim800.println("AT+CMGF=1");    // Set SMS to text mode
+    delay(1000);
+    sim800.println("AT+CMGS=\"+1234567890\"");  // Replace with the destination phone number
+    delay(1000);
+    sim800.println(message);   // Message body
+    delay(1000);
+    sim800.println((char)26);  // ASCII code for CTRL+Z to send SMS
+    delay(1000);
+}
+
+// Function to read gas levels and return percentage
+float readGasSensor(int pin) {
+    int analogValue = analogRead(pin);
+    return (analogValue / 4095.0) * 100;  // Convert ADC value (0-4095) to percentage
+}
+
+// SMS Commands Handler
+void processSMSCommand(String command) {
+    if (command == "ON" && !motor_auto_override) {
+        digitalWrite(RELAY_PIN, MOTOR_ON);
+        motor_status = true;
+    }
+    if (command == "OFF" && !motor_auto_override) {
+        digitalWrite(RELAY_PIN, MOTOR_OFF);
+        motor_status = false;
+    }
+}
+
+// Auto motor control based on gas levels
+void checkGasLevels() {
+    ammonia_level = readGasSensor(MQ_137_PIN);
+    h2s_level = readGasSensor(MQ_136_PIN);
+    methane_level = readGasSensor(MQ_4_PIN);
+
+    String message = "Gas levels: NH3: " + String(ammonia_level) + "%, H2S: " + String(h2s_level) + "%, CH4: " + String(methane_level) + "%";
+
+    // Send alert if levels are above threshold
+    if (ammonia_level > GAS_ALERT_THRESHOLD || h2s_level > GAS_ALERT_THRESHOLD || methane_level > GAS_ALERT_THRESHOLD) {
+        message += "\nAlert! Gas levels above 30%.";
+        sendSMS(message);
+    }
+
+    // Auto motor activation if levels exceed 80%
+    if (ammonia_level > GAS_CRITICAL_THRESHOLD || h2s_level > GAS_CRITICAL_THRESHOLD || methane_level > GAS_CRITICAL_THRESHOLD) {
+        motor_auto_override = true;
+        digitalWrite(RELAY_PIN, MOTOR_ON);
+        motor_status = true;
+        sendSMS("Critical! Gas levels above 80%. Motor running.");
+    }
+}
+
+// Setup and loop
+void setup() {
+    pinMode(RELAY_PIN, OUTPUT);
+    digitalWrite(RELAY_PIN, MOTOR_OFF);  // Start with motor off
+
+    sim800.begin(9600);   // Start communication with GSM module
+    Serial.begin(115200); // Start Serial monitor
+
+    // Additional setup code for gas sensors...
+}
+
+void loop() {
+    checkGasLevels();
+
+    // Periodically check for SMS command
+    if (sim800.available()) {
+        String smsCommand = sim800.readString();
+        smsCommand.trim();
+        processSMSCommand(smsCommand);
+    }
+
+    // Handle motor override duration when gas is above 80%
+    if (motor_auto_override && millis() - motor_stop_time > 600000) {  // 10 minutes
+        digitalWrite(RELAY_PIN, MOTOR_OFF);
+        motor_auto_override = false;
+    }
+
+    delay(5000);  // Check every 5 seconds
+}
+
+```
+
 
 ## Results and Impact
 What can be accomplised?
